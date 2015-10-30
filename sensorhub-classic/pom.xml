@@ -6,9 +6,9 @@
       <version>1.0</version>
       <relativePath>../sensorhub-all/pom.xml</relativePath>
    </parent>
-   <artifactId>sensorhub-dist</artifactId>
+   <artifactId>sensorhub-classic</artifactId>
    <packaging>pom</packaging>
-   <name>SensorHub Binary Distribution</name>
+   <name>SensorHub Classic Distribution</name>
    <profiles>
       <profile>
          <id>core</id>
@@ -221,4 +221,5 @@
          </plugin>
       </plugins>
    </build>
+   <description>SensorHub Classic Multi-Platform Binary Distribution</description>
 </project>
