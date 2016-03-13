@@ -7,22 +7,26 @@
    </formats>
 
    <includeBaseDirectory>false</includeBaseDirectory>
-   
-   <!-- Add all maven dependencies to the lib directory -->
-   <dependencySets>
-      <dependencySet>
-         <outputDirectory>lib</outputDirectory>
-         <unpack>false</unpack>
-         <useTransitiveDependencies>true</useTransitiveDependencies>
-         <excludes>
-             <exclude>xerces</exclude>
-             <exclude>xalan</exclude>
-         </excludes>
-      </dependencySet>
-   </dependencySets>
+
+   <moduleSets>
+      <moduleSet>
+         <binaries>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <!-- Add all maven dependencies to the lib directory -->
+            <dependencySets>
+               <dependencySet>
+                  <outputDirectory>lib</outputDirectory>
+                  <unpack>false</unpack>
+                  <useTransitiveDependencies>true</useTransitiveDependencies>
+               </dependencySet>
+            </dependencySets>
+         </binaries>
+      </moduleSet>
+   </moduleSets>
 
    <fileSets>
-       
+
       <!-- Add scripts to the root directory -->
       <fileSet>
          <directory>src/scripts</directory>
@@ -33,7 +37,7 @@
          </includes>
          <fileMode>0755</fileMode>
       </fileSet>
-      
+
       <!-- Add root files -->
       <fileSet>
          <directory></directory>
@@ -44,16 +48,16 @@
             <include>readme.txt</include>
          </includes>
       </fileSet>
-      
-      <!--  Add empty db folder -->
+
+      <!-- Add empty db folder -->
       <fileSet>
-        <directory></directory>
-        <outputDirectory>db</outputDirectory>
-        <excludes>
-          <exclude>**/*</exclude>
-        </excludes>
+         <directory></directory>
+         <outputDirectory>db</outputDirectory>
+         <excludes>
+            <exclude>**/*</exclude>
+         </excludes>
       </fileSet>
-      
+
       <!-- Add example configs -->
       <fileSet>
          <directory>src/config</directory>
@@ -63,13 +67,13 @@
          </includes>
          <fileMode>0755</fileMode>
       </fileSet>
-      
+
       <!-- Add example web clients -->
       <fileSet>
          <directory>web</directory>
          <outputDirectory>web</outputDirectory>
       </fileSet>
-      
+
    </fileSets>
 
 </assembly>

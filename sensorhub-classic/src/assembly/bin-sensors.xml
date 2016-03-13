@@ -9,12 +9,26 @@
    <includeBaseDirectory>false</includeBaseDirectory>
    
    <!-- Adds all maven dependencies to the lib directory -->
-   <dependencySets>
-      <dependencySet>
-         <outputDirectory>lib</outputDirectory>
-         <unpack>false</unpack>
-         <useTransitiveDependencies>true</useTransitiveDependencies>
-      </dependencySet>
-   </dependencySets>
+   <moduleSets>
+      <moduleSet>
+         <binaries>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <!-- Add all maven dependencies to the lib directory -->
+            <dependencySets>
+               <dependencySet>
+                  <outputDirectory>lib</outputDirectory>
+                  <unpack>false</unpack>
+                  <useTransitiveDependencies>true</useTransitiveDependencies>
+                  <useTransitiveFiltering>true</useTransitiveFiltering>
+                  <excludes>
+                     <exclude>*:sensorhub-core:*</exclude>
+                     <exclude>org.vast.opengis:*</exclude>
+                  </excludes>
+               </dependencySet>
+            </dependencySets>
+         </binaries>
+      </moduleSet>
+   </moduleSets>
 
 </assembly>
