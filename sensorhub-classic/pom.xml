@@ -22,6 +22,7 @@
             <activeByDefault>true</activeByDefault>
          </activation>
          <properties>
+            <distName>core-install</distName>
             <distType>core</distType>
          </properties>
          <modules>
@@ -41,9 +42,10 @@
          </modules>
       </profile>
       <profile>
-         <id>sensors</id>
+         <id>comm</id>
          <properties>
-            <distType>sensors</distType>
+            <distName>comm-pack</distName>
+            <distType>plugins</distType>
          </properties>
          <modules>
             <module>${oshCommPath}/sensorhub-comm-rxtx</module>
@@ -51,6 +53,15 @@
             <module>${oshCommPath}/sensorhub-comm-ble</module>
             <module>${oshCommPath}/sensorhub-comm-ble-dbus</module>
             <module>${oshCommPath}/sensorhub-comm-ip-zeroconf</module>
+         </modules>
+      </profile>
+      <profile>
+         <id>sensors</id>
+         <properties>
+            <distName>sensor-pack</distName>
+            <distType>plugins</distType>
+         </properties>
+         <modules>
             <module>${oshProcessPath}/sensorhub-process-vecmath</module>
             <module>${oshProcessPath}/sensorhub-process-geoloc</module>
             <module>${oshSensorsPath}/sensorhub-driver-v4l</module>
@@ -60,135 +71,6 @@
             <module>${oshSensorsPath}/sensorhub-driver-gps-nmea</module>
             <module>${oshSensorsPath}/sensorhub-driver-avl-911</module>
          </modules>
-         <!--
-         <dependencies>
-            <dependency>
-               <groupId>org.sensorhub</groupId>
-               <artifactId>sensorhub-comm-rxtx</artifactId>
-               <version>[0.1-SNAPSHOT,)</version>
-               <exclusions>
-                 <exclusion>
-                   <groupId>org.sensorhub</groupId>
-                   <artifactId>sensorhub-core</artifactId>
-                 </exclusion>
-               </exclusions> 
-            </dependency>
-            <dependency>
-               <groupId>org.sensorhub</groupId>
-               <artifactId>sensorhub-comm-dio</artifactId>
-               <version>[0.1-SNAPSHOT,)</version>
-               <exclusions>
-                 <exclusion>
-                   <groupId>org.sensorhub</groupId>
-                   <artifactId>sensorhub-core</artifactId>
-                 </exclusion>
-               </exclusions> 
-            </dependency>
-            <dependency>
-               <groupId>org.sensorhub</groupId>
-               <artifactId>sensorhub-process-vecmath</artifactId>
-               <version>[0.1-SNAPSHOT,)</version>
-               <exclusions>
-                 <exclusion>
-                   <groupId>org.sensorhub</groupId>
-                   <artifactId>sensorhub-core</artifactId>
-                 </exclusion>
-               </exclusions> 
-            </dependency>
-            <dependency>
-               <groupId>org.sensorhub</groupId>
-               <artifactId>sensorhub-process-geoloc</artifactId>
-               <version>[0.1-SNAPSHOT,)</version>
-               <exclusions>
-                 <exclusion>
-                   <groupId>org.sensorhub</groupId>
-                   <artifactId>sensorhub-core</artifactId>
-                 </exclusion>
-                 <exclusion>
-                   <groupId>org.vast.opengis</groupId>
-                   <artifactId>ows-framework-bindings</artifactId>
-                 </exclusion>
-               </exclusions> 
-            </dependency>
-            <dependency>
-               <groupId>org.sensorhub</groupId>
-               <artifactId>sensorhub-driver-v4l</artifactId>
-               <version>[0.1-SNAPSHOT,)</version>
-               <exclusions>
-                 <exclusion>
-                   <groupId>org.sensorhub</groupId>
-                   <artifactId>sensorhub-core</artifactId>
-                 </exclusion>
-               </exclusions> 
-            </dependency>
-            <dependency>
-               <groupId>org.sensorhub</groupId>
-               <artifactId>sensorhub-driver-axis</artifactId>
-               <version>[0.1-SNAPSHOT,)</version>
-               <exclusions>
-                 <exclusion>
-                   <groupId>org.sensorhub</groupId>
-                   <artifactId>sensorhub-core</artifactId>
-                 </exclusion>
-               </exclusions> 
-            </dependency>
-            <dependency>
-               <groupId>org.sensorhub</groupId>
-               <artifactId>sensorhub-driver-weatherStation</artifactId>
-               <version>[0.1-SNAPSHOT,)</version>
-               <exclusions>
-                 <exclusion>
-                   <groupId>org.sensorhub</groupId>
-                   <artifactId>sensorhub-core</artifactId>
-                 </exclusion>
-               </exclusions> 
-            </dependency>
-            <dependency>
-               <groupId>org.sensorhub</groupId>
-               <artifactId>sensorhub-driver-mti</artifactId>
-               <version>[0.1-SNAPSHOT,)</version>
-               <exclusions>
-                 <exclusion>
-                   <groupId>org.sensorhub</groupId>
-                   <artifactId>sensorhub-core</artifactId>
-                 </exclusion>
-               </exclusions> 
-            </dependency>
-            <dependency>
-               <groupId>org.sensorhub</groupId>
-               <artifactId>sensorhub-driver-trupulse</artifactId>
-               <version>[0.1-SNAPSHOT,)</version>
-               <exclusions>
-                 <exclusion>
-                   <groupId>org.sensorhub</groupId>
-                   <artifactId>sensorhub-core</artifactId>
-                 </exclusion>
-               </exclusions> 
-            </dependency>
-            <dependency>
-               <groupId>org.sensorhub</groupId>
-               <artifactId>sensorhub-driver-gps-nmea</artifactId>
-               <version>[0.1-SNAPSHOT,)</version>
-               <exclusions>
-                 <exclusion>
-                   <groupId>org.sensorhub</groupId>
-                   <artifactId>sensorhub-core</artifactId>
-                 </exclusion>
-               </exclusions> 
-            </dependency>
-            <dependency>
-               <groupId>org.sensorhub</groupId>
-               <artifactId>sensorhub-driver-avl-911</artifactId>
-               <version>[0.1-SNAPSHOT,)</version>
-               <exclusions>
-                 <exclusion>
-                   <groupId>org.sensorhub</groupId>
-                   <artifactId>sensorhub-core</artifactId>
-                 </exclusion>
-               </exclusions> 
-            </dependency>
-         </dependencies>
-         -->
       </profile>
    </profiles>
    <build>
@@ -201,7 +83,8 @@
                <descriptors>
                   <descriptor>src/assembly/bin-${distType}.xml</descriptor>
                </descriptors>
-               <finalName>sensorhub-v${project.version}</finalName>
+               <finalName>osh-v${project.version}-${distName}</finalName>
+               <appendAssemblyId>false</appendAssemblyId>
             </configuration>
             <executions>
                <execution>
