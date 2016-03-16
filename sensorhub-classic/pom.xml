@@ -4,7 +4,7 @@
       <groupId>org.sensorhub</groupId>
       <artifactId>sensorhub-all</artifactId>
       <version>1.1-SNAPSHOT</version>
-      <relativePath>../sensorhub-all/pom.xml</relativePath>
+      <relativePath>../../osh-core/sensorhub-all/pom.xml</relativePath>
    </parent>
    <artifactId>sensorhub-classic</artifactId>
    <packaging>pom</packaging>
