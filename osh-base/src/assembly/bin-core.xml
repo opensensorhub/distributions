@@ -46,6 +46,7 @@
             <include>config.json</include>
             <include>logback.xml</include>
             <include>readme.txt</include>
+            <include>README.md</include>
          </includes>
       </fileSet>
 
