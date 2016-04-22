@@ -12,8 +12,9 @@
    <properties>
       <oshCorePath>../../osh-core</oshCorePath>
       <oshCommPath>../../osh-comm</oshCommPath>
-      <oshProcessPath>../../osh-processing</oshProcessPath>
       <oshSensorsPath>../../osh-sensors</oshSensorsPath>
+      <oshProcessPath>../../osh-processing</oshProcessPath>
+      <oshServicePath>../../osh-services</oshServicePath>
    </properties>
    <profiles>
       <profile>
@@ -42,6 +43,7 @@
             <module>${oshCorePath}/sensorhub-webui-core</module>
             <module>${oshSensorsPath}/sensorhub-driver-fakegps</module>
             <module>${oshSensorsPath}/sensorhub-driver-fakeweather</module>
+            <module>${oshServicePath}/sensorhub-service-video</module>
          </modules>
       </profile>
       <profile>
