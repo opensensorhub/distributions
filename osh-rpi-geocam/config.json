@@ -28,32 +28,12 @@
     "dataProviders": [
       {
         "objClass": "org.sensorhub.impl.service.sos.SensorDataProviderConfig",
-        "sensorID": "9f867e12-c46a-4bcc-93ed-4b53dd13635e",
+        "sensorID": "d136b6ea-5648-af56-12be-456efb8ad200",
         "hiddenOutputs": [],
         "activateNotifications": false,
         "liveDataTimeout": 10.0,
         "enabled": true,
-        "uri": "urn:osh:video",
-        "maxFois": 10
-      },
-      {
-        "objClass": "org.sensorhub.impl.service.sos.SensorDataProviderConfig",
-        "sensorID": "d795beff-0a50-4d72-8744-d679e7ad85fe",
-        "hiddenOutputs": [],
-        "activateNotifications": false,
-        "liveDataTimeout": 10.0,
-        "enabled": true,
-        "uri": "urn:osh:gps",
-        "maxFois": 10
-      },
-      {
-        "objClass": "org.sensorhub.impl.service.sos.SensorDataProviderConfig",
-        "sensorID": "b7b61422-22ed-4aee-a037-548dd8322043",
-        "hiddenOutputs": [],
-        "activateNotifications": false,
-        "liveDataTimeout": 10.0,
-        "enabled": true,
-        "uri": "urn:osh:orientation",
+        "uri": "urn:osh:geocam",
         "maxFois": 10
       }
     ],
@@ -105,77 +85,113 @@
     "enabled": true
   },
   {
-    "objClass": "org.sensorhub.impl.sensor.v4l.V4LCameraConfig",
-    "deviceName": "/dev/video0",
-    "frameStorageCapacity": 0,
-    "defaultParams": {
-      "objClass": "org.sensorhub.impl.sensor.v4l.V4LCameraParams",
-      "doCapture": false,
-      "imgFormat": "YUYV",
-      "imgWidth": 640,
-      "imgHeight": 480,
-      "frameRate": 30
-    },
-    "enableHistory": true,
-    "connectTimeout": 0,
-    "position": {
-      "objClass": "org.sensorhub.api.sensor.PositionConfig"
-    },
-    "id": "9f867e12-c46a-4bcc-93ed-4b53dd13635e",
-    "moduleClass": "org.sensorhub.impl.sensor.v4l.V4LCameraDriver",
-    "name": "Rpi Camera",
-    "enabled": false
+    "objClass": "org.sensorhub.impl.sensor.SensorSystemConfig",
+    "id": "d136b6ea-5648-af56-12be-456efb8ad200",
+    "name": "GeoCam System",
+    "moduleClass": "org.sensorhub.impl.sensor.SensorSystem",
+    "enabled": true,
+    "sensorML": null,
+    "enableHistory": false,
+    "sensors":
+    [
+      {
+        "name": "gps",
+        "config":
+          {
+            "objClass": "org.sensorhub.impl.sensor.nmea.gps.NMEAGpsConfig",
+            "commSettings": {
+              "objClass": "org.sensorhub.impl.comm.RS232Config",
+              "portName": "/dev/ttyUSB0",
+              "baudRate": 9600,
+              "dataBits": 8,
+              "stopBits": 1,
+              "parity": "PARITY_NONE",
+              "receiveTimeout": -1,
+              "receiveThreshold": 1,
+              "moduleClass": "org.sensorhub.impl.comm.rxtx.RxtxSerialCommProvider",
+              "enabled": false
+            },
+            "activeSentences": [
+              "GGA", "GSA"
+            ],
+            "enableHistory": true,
+            "connectTimeout": 0,
+            "position": {
+              "objClass": "org.sensorhub.api.sensor.PositionConfig"
+            },
+            "id": "d795beff-0a50-4d72-8744-d679e7ad85fe",
+            "moduleClass": "org.sensorhub.impl.sensor.nmea.gps.NMEAGpsSensor",
+            "name": "GPS Sensor",
+            "enabled": false
+          }
+       },
+       {
+        "name": "orient",
+        "config":
+          {
+            "objClass": "org.sensorhub.impl.sensor.bno055.Bno055Config",
+            "commSettings": {
+              "objClass": "org.sensorhub.impl.comm.RS232Config",
+              "portName": "/dev/ttyAMA0",
+              "baudRate": 115200,
+              "dataBits": 8,
+              "stopBits": 1,
+              "parity": "PARITY_NONE",
+              "receiveTimeout": -1,
+              "receiveThreshold": 1,
+              "moduleClass": "org.sensorhub.impl.comm.rxtx.RxtxSerialCommProvider",
+              "enabled": false
+            },
+            "decimFactor": 10,
+            "enableHistory": true,
+            "connectTimeout": 0,
+            "position": {
+              "objClass": "org.sensorhub.api.sensor.PositionConfig"
+            },
+            "id": "b7b61422-22ed-4aee-a037-548dd8322043",
+            "moduleClass": "org.sensorhub.impl.sensor.bno055.Bno055Sensor",
+            "name": "Orientation Sensor",
+            "enabled": false
+          }
+      },
+      {
+        "name": "cam",
+        "config":
+          {
+            "objClass": "org.sensorhub.impl.sensor.v4l.V4LCameraConfig",
+            "deviceName": "/dev/video0",
+            "frameStorageCapacity": 0,
+            "defaultParams": {
+              "objClass": "org.sensorhub.impl.sensor.v4l.V4LCameraParams",
+              "doCapture": true,
+              "imgFormat": "YUYV",
+              "imgWidth": 640,
+              "imgHeight": 480,
+              "frameRate": 30
+            },
+            "enableHistory": true,
+            "connectTimeout": 0,
+            "position": {
+              "objClass": "org.sensorhub.api.sensor.PositionConfig"
+            },
+            "id": "9f867e12-c46a-4bcc-93ed-4b53dd13635e",
+            "moduleClass": "org.sensorhub.impl.sensor.v4l.V4LCameraDriver",
+            "name": "Video Camera",
+            "enabled": false
+          }
+      }
+    ]
   },
   {
-    "objClass": "org.sensorhub.impl.sensor.bno055.Bno055Config",
-    "commSettings": {
-      "objClass": "org.sensorhub.impl.comm.RS232Config",
-      "portName": "/dev/ttyAMA0",
-      "baudRate": 115200,
-      "dataBits": 8,
-      "stopBits": 1,
-      "parity": "PARITY_NONE",
-      "receiveTimeout": -1,
-      "receiveThreshold": 1,
-      "moduleClass": "org.sensorhub.impl.comm.rxtx.RxtxSerialCommProvider",
-      "enabled": false
-    },
-    "decimFactor": 10,
-    "enableHistory": true,
+    "objClass": "org.sensorhub.impl.client.sost.SOSTClientConfig",
+    "sosEndpointUrl": "http://192.168.0.12:8181/sensorhub/sos",
+    "sensorID": "d136b6ea-5648-af56-12be-456efb8ad200",
+    "usePersistentConnection": true,
+    "maxConnectErrors": 10,
     "connectTimeout": 0,
-    "position": {
-      "objClass": "org.sensorhub.api.sensor.PositionConfig"
-    },
-    "id": "b7b61422-22ed-4aee-a037-548dd8322043",
-    "moduleClass": "org.sensorhub.impl.sensor.bno055.Bno055Sensor",
-    "name": "Orientation Sensor",
-    "enabled": false
-  },
-  {
-    "objClass": "org.sensorhub.impl.sensor.nmea.gps.NMEAGpsConfig",
-    "commSettings": {
-      "objClass": "org.sensorhub.impl.comm.RS232Config",
-      "portName": "/dev/ttyUSB0",
-      "baudRate": 9600,
-      "dataBits": 8,
-      "stopBits": 1,
-      "parity": "PARITY_NONE",
-      "receiveTimeout": -1,
-      "receiveThreshold": 1,
-      "moduleClass": "org.sensorhub.impl.comm.rxtx.RxtxSerialCommProvider",
-      "enabled": false
-    },
-    "activeSentences": [
-      "GGA"
-    ],
-    "enableHistory": true,
-    "connectTimeout": 0,
-    "position": {
-      "objClass": "org.sensorhub.api.sensor.PositionConfig"
-    },
-    "id": "d795beff-0a50-4d72-8744-d679e7ad85fe",
-    "moduleClass": "org.sensorhub.impl.sensor.nmea.gps.NMEAGpsSensor",
-    "name": "GPS Sensor",
+    "id": "fb3752c3-24c0-4a5e-b0e9-7475c0ac1b9c",
+    "moduleClass": "org.sensorhub.impl.client.sost.SOSTClient",
+    "name": "SOS-T Client",
     "enabled": false
   }
 ]
