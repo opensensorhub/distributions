@@ -1,0 +1,414 @@
+[
+  {
+    "objClass": "org.sensorhub.impl.service.HttpServerConfig",
+    "httpPort": 8181,
+    "staticDocRootUrl": "web",
+    "servletsRootUrl": "/sensorhub",
+    "maxRequestsPerSecond": 100,
+    "id": "5cb05c9c-9e08-4fa1-8731-ffaa5846bdc1",
+    "moduleClass": "org.sensorhub.impl.service.HttpServer",
+    "name": "HTTP Server",
+    "enabled": true
+  },
+  {
+    "objClass": "org.sensorhub.ui.AdminUIConfig",
+    "widgetSet": "org.sensorhub.ui.SensorHubWidgetSet",
+    "customPanels": [],
+    "customForms": [],
+    "id": "5cb05c9c-9123-4fa1-8731-ffaa51489678",
+    "moduleClass": "org.sensorhub.ui.AdminUIModule",
+    "name": "Admin UI",
+    "enabled": true
+  },
+  {
+    "objClass": "org.sensorhub.impl.service.sos.SOSServiceConfig",
+    "enableTransactional": true,
+    "maxObsCount": 100,
+    "maxRecordCount": 100000,
+    "newStorageConfig": {
+      "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
+      "memoryCacheSize": 1024,
+      "storagePath": "db.dat",
+      "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
+      "enabled": false
+    },
+    "dataProviders": [
+      {
+        "objClass": "org.sensorhub.impl.service.sos.SensorDataProviderConfig",
+        "sensorID": "7b3d8d20-7027-4608-87d5-bf5d18428791",
+        "storageID": "2db121bc-6bc8-49cc-9797-560395add08f",
+        "hiddenOutputs": [],
+        "activateNotifications": false,
+        "liveDataTimeout": 10.0,
+        "enabled": true,
+        "uri": "urn:osh:virb1",
+        "maxFois": 10
+      },
+      {
+        "objClass": "org.sensorhub.impl.service.sos.SensorDataProviderConfig",
+        "sensorID": "d7e0ab74-71f9-478e-952d-c6ce21d2416c",
+        "storageID": "e869f24c-f0c9-4fb6-bca5-264546524a97",
+        "hiddenOutputs": [],
+        "activateNotifications": false,
+        "liveDataTimeout": 10.0,
+        "enabled": true,
+        "uri": "urn:osh:virb2",
+        "maxFois": 10
+      },
+      {
+        "objClass": "org.sensorhub.impl.service.sos.SensorDataProviderConfig",
+        "sensorID": "c9140792-8ff2-4c5a-89ef-de02f96c7f71",
+        "hiddenOutputs": [],
+        "activateNotifications": false,
+        "liveDataTimeout": 10.0,
+        "enabled": true,
+        "uri": "urn:osh:dahua1",
+        "maxFois": 10
+      },
+      {
+        "objClass": "org.sensorhub.impl.service.sos.SensorDataProviderConfig",
+        "sensorID": "a3640774-4cd2-427f-96c6-4176f21cce3a",
+        "storageID": "87b3f16b-f1bb-4448-95aa-49dcb3335562",
+        "hiddenOutputs": [],
+        "activateNotifications": false,
+        "liveDataTimeout": 10.0,
+        "enabled": true,
+        "uri": "urn:osh:solo-video",
+        "maxFois": 10
+      }
+    ],
+    "dataConsumers": [],
+    "customFormats": [
+      {
+        "objClass": "org.sensorhub.impl.service.sos.SOSCustomFormatConfig",
+        "mimeType": "video/mp4",
+        "className": "org.sensorhub.impl.service.sos.video.MP4Serializer"
+      },
+      {
+        "objClass": "org.sensorhub.impl.service.sos.SOSCustomFormatConfig",
+        "mimeType": "video/x-motion-jpeg",
+        "className": "org.sensorhub.impl.service.sos.video.MJPEGSerializer"
+      }
+    ],
+    "ogcCapabilitiesInfo": {
+      "objClass": "org.sensorhub.impl.service.ogc.OGCServiceConfig$CapabilitiesInfo",
+      "title": "Test SOS-T Service",
+      "description": "An SOS-T service that can receive data from any sensor",
+      "keywords": [
+        "SensorHub",
+        "SOS-T"
+      ],
+      "fees": "NONE",
+      "accessConstraints": "NONE",
+      "serviceProvider": {
+        "objClass": "org.vast.util.ResponsibleParty",
+        "individualName": "Alex Robin",
+        "organizationName": "Sensia Software LLC",
+        "positionName": "Engineer",
+        "voiceNumbers": [],
+        "faxNumbers": [],
+        "deliveryPoints": [],
+        "city": "Toulouse",
+        "postalCode": "30000",
+        "country": "France",
+        "emails": [],
+        "hrefPresent": false
+      }
+    },
+    "enableHttpGET": true,
+    "enableHttpPOST": true,
+    "enableSOAP": true,
+    "endPoint": "/sos",
+    "id": "5cb05c9c-9e08-4fa1-8731-ff41e246bdc1",
+    "moduleClass": "org.sensorhub.impl.service.sos.SOSService",
+    "name": "SOS Service",
+    "enabled": true
+  },
+  {
+    "objClass": "org.sensorhub.impl.sensor.virbxe.VirbXeConfig",
+    "net": {
+      "objClass": "org.sensorhub.impl.comm.HTTPConfig",
+      "remoteHost": "bottsgeo.simple-url.com",
+      "remotePort": 80,
+      "moduleClass": "org.sensorhub.impl.comm.TCPCommProvider",
+      "enabled": false
+    },
+    "rtsp": {
+      "objClass": "org.sensorhub.impl.sensor.rtpcam.RTSPConfig",
+      "rtspPort": 554,
+      "videoPath": "/livePreviewStream",
+      "localUdpPort": 20200
+    },
+    "connectTimeout": 0,
+    "position": {
+      "objClass": "org.sensorhub.api.sensor.PositionConfig"
+    },
+    "id": "7b3d8d20-7027-4608-87d5-bf5d18428791",
+    "moduleClass": "org.sensorhub.impl.sensor.virbxe.VirbXeDriver",
+    "name": "Garmin VIRB 1",
+    "enabled": false
+  },
+  {
+    "objClass": "org.sensorhub.impl.sensor.virbxe.VirbXeConfig",
+    "net": {
+      "objClass": "org.sensorhub.impl.comm.HTTPConfig",
+      "remotePort": 80,
+      "moduleClass": "org.sensorhub.impl.comm.TCPCommProvider",
+      "enabled": false
+    },
+    "rtsp": {
+      "objClass": "org.sensorhub.impl.sensor.rtpcam.RTSPConfig",
+      "rtspPort": 554,
+      "videoPath": "/livePreviewStream",
+      "localUdpPort": 20300
+    },
+    "connectTimeout": 0,
+    "position": {
+      "objClass": "org.sensorhub.api.sensor.PositionConfig"
+    },
+    "id": "d7e0ab74-71f9-478e-952d-c6ce21d2416c",
+    "moduleClass": "org.sensorhub.impl.sensor.virbxe.VirbXeDriver",
+    "name": "Garmin VIRB 2",
+    "enabled": false
+  },
+  {
+    "objClass": "org.sensorhub.impl.sensor.dahua.DahuaCameraConfig",
+    "video": {
+      "objClass": "org.sensorhub.impl.sensor.dahua.DahuaCameraConfig$VideoConfig",
+      "resolution": "HD_720P",
+      "frameRate": 30,
+      "grayscale": false
+    },
+    "net": {
+      "objClass": "org.sensorhub.impl.comm.HTTPConfig",
+      "remotePort": 80,
+      "moduleClass": "org.sensorhub.impl.comm.TCPCommProvider",
+      "enabled": false
+    },
+    "rtsp": {
+      "objClass": "org.sensorhub.impl.sensor.rtpcam.RTSPConfig",
+      "rtspPort": 554,
+      "videoPath": "/cam/realmonitor?channel=1&subtype=0",
+      "localUdpPort": 20000
+    },
+    "ptz": {
+      "objClass": "org.sensorhub.impl.sensor.videocam.ptz.PtzConfig",
+      "presets": []
+    },
+    "connectTimeout": 0,
+    "position": {
+      "objClass": "org.sensorhub.api.sensor.PositionConfig"
+    },
+    "id": "c9140792-8ff2-4c5a-89ef-de02f96c7f71",
+    "moduleClass": "org.sensorhub.impl.sensor.dahua.DahuaCameraDriver",
+    "name": "Dahua Cam 1",
+    "enabled": false
+  },
+  {
+    "objClass": "org.sensorhub.impl.sensor.mavlink.MavlinkConfig",
+    "vehicleID": "solo:S115A5800419",
+    "activeMessages": [
+      "GLOBAL_POSITION",
+      "ATTITUDE",
+      "GIMBAL_REPORT"
+    ],
+    "activeCommands": [],
+    "commSettings": {
+      "objClass": "org.sensorhub.impl.comm.UDPConfig",
+      "localPort": 14550,
+      "remotePort": 14560,
+      "remoteHost": "10.1.1.10",
+      "moduleClass": "org.sensorhub.impl.comm.UDPCommProvider",
+      "enabled": false
+    },
+    "connectTimeout": 0,
+    "position": {
+      "objClass": "org.sensorhub.api.sensor.PositionConfig"
+    },
+    "id": "26178198-9b82-4e32-923e-dbe9d62f1fe8",
+    "moduleClass": "org.sensorhub.impl.sensor.mavlink.MavlinkDriver",
+    "name": "Solo Telemetry",
+    "enabled": false
+  },
+  {
+    "objClass": "org.sensorhub.impl.sensor.rtpcam.RTPCameraConfig",
+    "cameraID": "solo:S115A5800419",
+    "video": {
+      "objClass": "org.sensorhub.impl.sensor.rtpcam.RTPCameraConfig$VideoConfig",
+      "frameWidth": 1080,
+      "frameHeight": 720,
+      "frameRate": 30,
+      "grayscale": false
+    },
+    "net": {
+      "objClass": "org.sensorhub.impl.comm.TCPConfig",
+      "remotePort": 0,
+      "remoteHost": "10.1.1.1",
+      "moduleClass": "org.sensorhub.impl.comm.TCPCommProvider",
+      "enabled": false
+    },
+    "rtsp": {
+      "objClass": "org.sensorhub.impl.sensor.rtpcam.RTSPConfig",
+      "rtspPort": 5502,
+      "localUdpPort": 5600
+    },
+    "connectTimeout": 0,
+    "position": {
+      "objClass": "org.sensorhub.api.sensor.PositionConfig"
+    },
+    "id": "a3640774-4cd2-427f-96c6-4176f21cce3a",
+    "moduleClass": "org.sensorhub.impl.sensor.rtpcam.RTPCameraDriver",
+    "name": "Solo Video Camera",
+    "enabled": false
+  },
+  {
+    "objClass": "org.sensorhub.impl.persistence.StreamStorageConfig",
+    "storageConfig": {
+      "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
+      "memoryCacheSize": 1024,
+      "storagePath": "virb1.dat",
+      "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
+      "enabled": true
+    },
+    "dataSourceID": "7b3d8d20-7027-4608-87d5-bf5d18428791",
+    "minCommitPeriod": 10000,
+    "processEvents": true,
+    "id": "2db121bc-6bc8-49cc-9797-560395add08f",
+    "moduleClass": "org.sensorhub.impl.persistence.GenericStreamStorage",
+    "name": "Virb1 DataStore",
+    "enabled": true
+  },
+  {
+    "objClass": "org.sensorhub.impl.persistence.StreamStorageConfig",
+    "storageConfig": {
+      "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
+      "memoryCacheSize": 1024,
+      "storagePath": "virb2.dat",
+      "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
+      "enabled": true
+    },
+    "dataSourceID": "d7e0ab74-71f9-478e-952d-c6ce21d2416c",
+    "minCommitPeriod": 10000,
+    "processEvents": true,
+    "id": "e869f24c-f0c9-4fb6-bca5-264546524a97",
+    "moduleClass": "org.sensorhub.impl.persistence.GenericStreamStorage",
+    "name": "Virb2 DataStore",
+    "enabled": true
+  },
+  {
+    "objClass": "org.sensorhub.impl.persistence.StreamStorageConfig",
+    "storageConfig": {
+      "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
+      "memoryCacheSize": 1024,
+      "storagePath": "dahua1.dat",
+      "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
+      "enabled": true
+    },
+    "dataSourceID": "c9140792-8ff2-4c5a-89ef-de02f96c7f71",
+    "minCommitPeriod": 10000,
+    "processEvents": true,
+    "id": "71197dce-128a-4b38-92c2-c749a1f75f8e",
+    "moduleClass": "org.sensorhub.impl.persistence.GenericStreamStorage",
+    "name": "Dahua1 DataStore",
+    "enabled": true
+  },
+  {
+    "objClass": "org.sensorhub.impl.persistence.StreamStorageConfig",
+    "storageConfig": {
+      "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
+      "memoryCacheSize": 1024,
+      "storagePath": "solo-nav.dat",
+      "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
+      "enabled": true
+    },
+    "dataSourceID": "26178198-9b82-4e32-923e-dbe9d62f1fe8",
+    "minCommitPeriod": 10000,
+    "processEvents": true,
+    "id": "4ed66a77-68f6-447a-9e5d-a46311cfa239",
+    "moduleClass": "org.sensorhub.impl.persistence.GenericStreamStorage",
+    "name": "Solo Nav DataStore",
+    "enabled": true
+  },
+  {
+    "objClass": "org.sensorhub.impl.persistence.StreamStorageConfig",
+    "storageConfig": {
+      "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
+      "memoryCacheSize": 1024,
+      "storagePath": "solo-video.dat",
+      "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
+      "enabled": true
+    },
+    "dataSourceID": "a3640774-4cd2-427f-96c6-4176f21cce3a",
+    "minCommitPeriod": 10000,
+    "processEvents": true,
+    "id": "87b3f16b-f1bb-4448-95aa-49dcb3335562",
+    "moduleClass": "org.sensorhub.impl.persistence.GenericStreamStorage",
+    "name": "Solo Video DataStore",
+    "enabled": true
+  },
+  {
+    "objClass": "org.sensorhub.impl.client.sost.SOSTClientConfig",
+    "sosEndpointUrl": "http://botts.pscloud.org:8181/sensorhub/sos",
+    "sensorID": "7b3d8d20-7027-4608-87d5-bf5d18428791",
+    "usePersistentConnection": true,
+    "maxQueueSize": 200,
+    "maxConnectErrors": 10,
+    "connectTimeout": 0,
+    "id": "18604955-3967-4a22-a259-d7c38aa6c932",
+    "moduleClass": "org.sensorhub.impl.client.sost.SOSTClient",
+    "name": "Virb1 SOS-T Client",
+    "enabled": false
+  },
+  {
+    "objClass": "org.sensorhub.impl.client.sost.SOSTClientConfig",
+    "sosEndpointUrl": "http://botts.pscloud.org:8181/sensorhub/sos",
+    "sensorID": "d7e0ab74-71f9-478e-952d-c6ce21d2416c",
+    "usePersistentConnection": true,
+    "maxQueueSize": 200,
+    "maxConnectErrors": 10,
+    "connectTimeout": 0,
+    "id": "18604955-3967-4a22-a259-d7c38aa6c934",
+    "moduleClass": "org.sensorhub.impl.client.sost.SOSTClient",
+    "name": "Virb2 SOS-T Client",
+    "enabled": false
+  },
+  {
+    "objClass": "org.sensorhub.impl.client.sost.SOSTClientConfig",
+    "sosEndpointUrl": "http://botts.pscloud.org:8181/sensorhub/sos",
+    "sensorID": "c9140792-8ff2-4c5a-89ef-de02f96c7f71",
+    "usePersistentConnection": true,
+    "maxQueueSize": 200,
+    "maxConnectErrors": 10,
+    "connectTimeout": 0,
+    "id": "18604955-3967-4a22-a259-d7c38aa6c935",
+    "moduleClass": "org.sensorhub.impl.client.sost.SOSTClient",
+    "name": "Dahua1 SOS-T Client",
+    "enabled": false
+  },
+  {
+    "objClass": "org.sensorhub.impl.client.sost.SOSTClientConfig",
+    "sosEndpointUrl": "http://botts.pscloud.org:8181/sensorhub/sos",
+    "sensorID": "26178198-9b82-4e32-923e-dbe9d62f1fe8",
+    "usePersistentConnection": true,
+    "maxQueueSize": 200,
+    "maxConnectErrors": 10,
+    "connectTimeout": 0,
+    "id": "18604955-3967-4a22-a259-d7c38aa6c936",
+    "moduleClass": "org.sensorhub.impl.client.sost.SOSTClient",
+    "name": "Solo Nav SOS-T Client",
+    "enabled": false
+  },
+  {
+    "objClass": "org.sensorhub.impl.client.sost.SOSTClientConfig",
+    "sosEndpointUrl": "http://botts.pscloud.org:8181/sensorhub/sos",
+    "sensorID": "a3640774-4cd2-427f-96c6-4176f21cce3a",
+    "usePersistentConnection": true,
+    "maxQueueSize": 200,
+    "maxConnectErrors": 10,
+    "connectTimeout": 0,
+    "id": "18604955-3967-4a22-a259-d7c38aa6c933",
+    "moduleClass": "org.sensorhub.impl.client.sost.SOSTClient",
+    "name": "Solo Video SOS-T Client",
+    "enabled": false
+  }
+]

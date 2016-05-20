@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>Test x264 Video decoding</title>
+  </head>
+    <body>
+       
+      <h2>Test client for x264 video decoding using Media Source API</h2>
+       
+      <script type="text/javascript">
+        function load() {
+            var url = document.getElementById('url').value;
+            loadStream(url);
+        }
+      
+      function loadStream(url) {
+      
+        var mediaSource = new MediaSource();
+        var buffer;
+        var queue = [];
+        var frameCounter = 0;
+
+        var video = document.querySelector('video');
+        video.src = window.URL.createObjectURL(mediaSource);
+
+        mediaSource.addEventListener('sourceopen', function(e) {
+          mediaSource.duration = 10000000;
+          video.play();
+
+          //buffer = mediaSource.addSourceBuffer('video/mp4; codecs="avc1.64001E"'); // high profile
+          buffer = mediaSource.addSourceBuffer('video/mp4; codecs="avc1.4D401E"'); // main profile
+          //buffer = mediaSource.addSourceBuffer('video/mp4; codecs="avc1.58A01E"'); // extended profile (baseline compatible)
+          //buffer = mediaSource.addSourceBuffer('video/mp4; codecs="avc1.42E01E"'); // baseline profile
+          buffer.addEventListener('updatestart', function(e) { /*console.log('updatestart: ' + mediaSource.readyState); */});
+          buffer.addEventListener('update', function(e) { /*console.log('update: ' + mediaSource.readyState); */});
+          buffer.addEventListener('updateend', function(e) { /*console.log('updateend: ' + mediaSource.readyState); */});
+          buffer.addEventListener('error', function(e) { /*console.log('error: ' + mediaSource.readyState); */});
+          buffer.addEventListener('abort', function(e) { /*console.log('abort: ' + mediaSource.readyState); */});
+
+          buffer.addEventListener('update', function() { // Note: Have tried 'updateend'
+            while (queue.length > 0 && !buffer.updating) {
+              buffer.appendBuffer(queue.shift());
+            }
+          });
+        }, false);
+
+        mediaSource.addEventListener('sourceopen', function(e) { /*console.log('sourceopen: ' + mediaSource.readyState); */});
+        mediaSource.addEventListener('sourceended', function(e) { /*console.log('sourceended: ' + mediaSource.readyState); */});
+        mediaSource.addEventListener('sourceclose', function(e) { /*console.log('sourceclose: ' + mediaSource.readyState); */});
+        mediaSource.addEventListener('error', function(e) { console.log('error: ' + mediaSource.readyState); });
+
+        var ws = new WebSocket(url);
+        ws.binaryType = 'arraybuffer';
+        ws.onmessage = function(event) {
+            //var data = new Uint8Array(event.data);
+            if (buffer.updating || queue.length > 0) {
+              queue.push(event.data);
+            } else {
+              buffer.appendBuffer(event.data);
+            }
+            
+            frameCounter++;
+            document.getElementById('timeStamp').innerHTML = "Frame " + frameCounter;
+        }
+      }
+      
+      </script>
+        <div class="container-vertical">
+          <label for="url">WebSocket Url:</label>
+          <select name="url" id="url" size="1">
+            <option value="ws://localhost:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:osh:virb1&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,now/2018-01-01Z&responseFormat=video/mp4">VIRB #1 Local</option>
+            <option value="ws://botts.pscloud.org:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:garmin:cam:3911837281-sos&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,now/2018-01-01Z&responseFormat=video/mp4">VIRB #1 PS Cloud</option>
+            <option value="ws://botts.pscloud.org:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:garmin:cam:3911837281-sos&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,2016-05-11T19:40:11Z/2016-05-11T19:50:11Z&replaySpeed=1.25&responseFormat=video/mp4">VIRB #1 PS Cloud (Archive)</option>
+            <option value="ws://localhost:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:osh:virb2&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,now/2018-01-01Z&responseFormat=video/mp4">VIRB #2 Local</option>
+            <option value="ws://botts.pscloud.org:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:garmin:cam:XXXX-sos&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,now/2018-01-01Z&responseFormat=video/mp4">VIRB #2 PS Cloud</option>
+            <option value="ws://localhost:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:osh:solo-video&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,now/2018-01-01Z&responseFormat=video/mp4">SOLO Local</option>
+            <option value="ws://botts.pscloud.org:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:osh:sensor:rtpcam:solo:S115A5800419-sos&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,now/2018-01-01Z&responseFormat=video/mp4">SOLO PS Cloud</option>
+            <option value="ws://botts.pscloud.org:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:osh:sensor:rtpcam:solo:S115A5800419-sos&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,2016-05-19T16:13:51.291Z/2016-05-19T16:14:51.291Z&replaySpeed=1.25&responseFormat=video/mp4">SOLO PS Cloud (Archive)</option>
+          </select> 
+          <button type="button" onclick="load()">Load</button> 
+          <div id="timeStamp"><!--TimeStamp:--></div>
+          <video id="video" width="640" height="480" controls autoplay></video>
+        </div>
+      
+    </body>
+</html>

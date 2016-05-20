@@ -4,7 +4,7 @@
     "httpPort": 8181,
     "staticDocRootUrl": "web",
     "servletsRootUrl": "/sensorhub",
-    "maxRequestsPerSecond": 10,
+    "maxRequestsPerSecond": 100,
     "id": "5cb05c9c-9e08-4fa1-8731-ffaa5846bdc1",
     "moduleClass": "org.sensorhub.impl.service.HttpServer",
     "name": "HTTP Server",
