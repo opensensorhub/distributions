@@ -4,7 +4,7 @@
     "httpPort": 8181,
     "staticDocRootUrl": "web",
     "servletsRootUrl": "/sensorhub",
-    "maxRequestsPerSecond": 100,
+    "maxRequestsPerSecond": 25,
     "id": "5cb05c9c-9e08-4fa1-8731-ffaa5846bdc1",
     "moduleClass": "org.sensorhub.impl.service.HttpServer",
     "name": "HTTP Server",
@@ -75,9 +75,28 @@
         "enabled": true,
         "uri": "urn:osh:solo-video",
         "maxFois": 10
+      },
+      {
+        "objClass": "org.sensorhub.impl.service.sos.SensorDataProviderConfig",
+        "sensorID": "urn:uuid:d136b6ea-5648-af56-12be-456efb8ad200",
+        "storageID": "urn:uuid:d136b6ea-5648-af56-12be-456efb8ad200#storage",
+        "hiddenOutputs": [],
+        "activateNotifications": false,
+        "liveDataTimeout": 10.0,
+        "enabled": true,
+        "uri": "urn:uuid:d136b6ea-5648-af56-12be-456efb8ad200-sos",
+        "maxFois": 10
       }
     ],
-    "dataConsumers": [],
+    "dataConsumers": [
+      {
+        "objClass": "org.sensorhub.impl.service.sos.SensorConsumerConfig",
+        "sensorID": "urn:uuid:d136b6ea-5648-af56-12be-456efb8ad200",
+        "storageID": "urn:uuid:d136b6ea-5648-af56-12be-456efb8ad200#storage",
+        "enabled": true,
+        "offering": "urn:uuid:d136b6ea-5648-af56-12be-456efb8ad200-sos"
+      }
+    ],
     "customFormats": [
       {
         "objClass": "org.sensorhub.impl.service.sos.SOSCustomFormatConfig",
@@ -128,8 +147,8 @@
     "objClass": "org.sensorhub.impl.sensor.virbxe.VirbXeConfig",
     "net": {
       "objClass": "org.sensorhub.impl.comm.HTTPConfig",
-      "remoteHost": "bottsgeo.simple-url.com",
       "remotePort": 80,
+      "remoteHost": "bottsgeo.simple-url.com",
       "moduleClass": "org.sensorhub.impl.comm.TCPCommProvider",
       "enabled": false
     },
@@ -410,5 +429,33 @@
     "moduleClass": "org.sensorhub.impl.client.sost.SOSTClient",
     "name": "Solo Video SOS-T Client",
     "enabled": false
+  },
+  {
+    "objClass": "org.sensorhub.impl.sensor.sost.SOSVirtualSensorConfig",
+    "connectTimeout": 0,
+    "position": {
+      "objClass": "org.sensorhub.api.sensor.PositionConfig"
+    },
+    "id": "urn:uuid:d136b6ea-5648-af56-12be-456efb8ad200",
+    "moduleClass": "org.sensorhub.impl.sensor.sost.SOSVirtualSensor",
+    "name": "GeoCam System",
+    "enabled": false
+  },
+  {
+    "objClass": "org.sensorhub.impl.persistence.StreamStorageConfig",
+    "storageConfig": {
+      "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
+      "memoryCacheSize": 1024,
+      "storagePath": "urn:uuid:d136b6ea-5648-af56-12be-456efb8ad200.dat",
+      "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
+      "enabled": false
+    },
+    "dataSourceID": "urn:uuid:d136b6ea-5648-af56-12be-456efb8ad200",
+    "minCommitPeriod": 10000,
+    "processEvents": true,
+    "id": "urn:uuid:d136b6ea-5648-af56-12be-456efb8ad200#storage",
+    "moduleClass": "org.sensorhub.impl.persistence.GenericStreamStorage",
+    "name": "GeoCam System Storage",
+    "enabled": true
   }
 ]
