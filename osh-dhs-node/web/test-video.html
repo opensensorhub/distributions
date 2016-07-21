@@ -30,9 +30,10 @@
           video.play();
 
           //buffer = mediaSource.addSourceBuffer('video/mp4; codecs="avc1.64001E"'); // high profile
-          buffer = mediaSource.addSourceBuffer('video/mp4; codecs="avc1.4D401E"'); // main profile
+          //buffer = mediaSource.addSourceBuffer('video/mp4; codecs="avc1.4D401E"'); // main profile
           //buffer = mediaSource.addSourceBuffer('video/mp4; codecs="avc1.58A01E"'); // extended profile (baseline compatible)
           //buffer = mediaSource.addSourceBuffer('video/mp4; codecs="avc1.42E01E"'); // baseline profile
+          buffer = mediaSource.addSourceBuffer('video/mp4; codecs="avc1.42401F"');
           buffer.addEventListener('updatestart', function(e) { /*console.log('updatestart: ' + mediaSource.readyState); */});
           buffer.addEventListener('update', function(e) { /*console.log('update: ' + mediaSource.readyState); */});
           buffer.addEventListener('updateend', function(e) { /*console.log('updateend: ' + mediaSource.readyState); */});
@@ -72,12 +73,13 @@
           <select name="url" id="url" size="1">
             <option value="ws://localhost:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:osh:virb1&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,now/2018-01-01Z&responseFormat=video/mp4">VIRB #1 Local</option>
             <option value="ws://botts.pscloud.org:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:garmin:cam:3911837281-sos&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,now/2018-01-01Z&responseFormat=video/mp4">VIRB #1 PS Cloud</option>
-            <option value="ws://botts.pscloud.org:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:garmin:cam:3911837281-sos&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,2016-05-20T15:31:01.972Z/2016-05-20T15:35:56.345Z&replaySpeed=1.25&responseFormat=video/mp4">VIRB #1 PS Cloud (Archive)</option>
+            <option value="ws://botts.pscloud.org:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:garmin:cam:3911837281-sos&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,2016-05-20T18:10:04.159Z/2016-05-20T19:10:04.159Z&replaySpeed=1.25&responseFormat=video/mp4">VIRB #1 PS Cloud (Archive)</option>
             <option value="ws://localhost:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:osh:virb2&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,now/2018-01-01Z&responseFormat=video/mp4">VIRB #2 Local</option>
             <option value="ws://botts.pscloud.org:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:garmin:cam:3910500051-sos&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,now/2018-01-01Z&responseFormat=video/mp4">VIRB #2 PS Cloud</option>
+            <option value="ws://botts.pscloud.org:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:garmin:cam:3910500051-sos&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,2016-05-20T20:52:33.416Z/2016-05-20T21:12:33.416Z&replaySpeed=1.25&responseFormat=video/mp4">VIRB #2 PS Cloud (Archive)</option>
             <option value="ws://localhost:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:osh:solo-video&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,now/2018-01-01Z&responseFormat=video/mp4">SOLO Local</option>
             <option value="ws://botts.pscloud.org:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:osh:sensor:rtpcam:solo:S115A5800419-sos&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,now/2018-01-01Z&responseFormat=video/mp4">SOLO PS Cloud</option>
-            <option value="ws://botts.pscloud.org:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:osh:sensor:rtpcam:solo:S115A5800419-sos&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,2016-05-19T16:13:51.291Z/2016-05-19T16:14:51.291Z&replaySpeed=1.25&responseFormat=video/mp4">SOLO PS Cloud (Archive)</option>
+            <option value="ws://botts.pscloud.org:8181/sensorhub/sos?service=SOS&version=2.0&request=GetResult&offering=urn:osh:sensor:rtpcam:solo:S115A5800419-sos&observedProperty=http://sensorml.com/ont/swe/property/VideoFrame&temporalFilter=phenTime,2016-05-19T17:03:21Z/2016-05-19T17:05:00Z&replaySpeed=1.25&responseFormat=video/mp4">SOLO PS Cloud (Archive)</option>
           </select> 
           <button type="button" onclick="load()">Load</button> 
           <div id="timeStamp"><!--TimeStamp:--></div>

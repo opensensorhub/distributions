@@ -41,6 +41,7 @@
             <module>${oshCorePath}/sensorhub-service-swe</module>
             <module>${oshCorePath}/sensorhub-tools</module>
             <module>${oshCorePath}/sensorhub-webui-core</module>
+            <module>${oshCommPath}/sensorhub-comm-ip-zeroconf</module>
             <module>${oshSensorsPath}/sensorhub-driver-fakegps</module>
             <module>${oshSensorsPath}/sensorhub-driver-fakeweather</module>
             <module>${oshSensorsPath}/sensorhub-driver-videocam</module>
