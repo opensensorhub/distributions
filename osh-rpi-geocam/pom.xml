@@ -6,7 +6,7 @@
       <version>1.1-SNAPSHOT</version>
       <relativePath>../../osh-core/sensorhub-all/pom.xml</relativePath>
    </parent>
-   <artifactId>osh-video-gps-imu</artifactId>
+   <artifactId>osh-rpi-geocam</artifactId>
    <packaging>pom</packaging>
    <name>OSH for geolocated video on Raspberry Pi</name>
    <properties>

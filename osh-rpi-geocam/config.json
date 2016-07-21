@@ -92,6 +92,7 @@
     "enabled": true,
     "sensorML": null,
     "enableHistory": false,
+    "uniqueID": "geocam:200",
     "sensors":
     [
       {
@@ -184,14 +185,27 @@
   },
   {
     "objClass": "org.sensorhub.impl.client.sost.SOSTClientConfig",
-    "sosEndpointUrl": "http://192.168.0.12:8181/sensorhub/sos",
     "sensorID": "d136b6ea-5648-af56-12be-456efb8ad200",
-    "usePersistentConnection": true,
-    "maxConnectErrors": 10,
-    "connectTimeout": 0,
+    "sos": {
+      "objClass": "org.sensorhub.impl.comm.HTTPConfig",
+      "remoteHost": "192.168.0.12",
+      "resourcePath": "/sensorhub/sos",
+      "remotePort": 8181,
+      "localAddress": "AUTO"
+    },
+    "connection": {
+      "objClass": "org.sensorhub.impl.client.sost.SOSTClientConfig$SOSConnectionConfig",
+      "usePersistentConnection": true,
+      "maxQueueSize": 100,
+      "maxConnectErrors": 10,
+      "checkReachability": true,
+      "connectTimeout": 3000,
+      "reconnectPeriod": 10000,
+      "reconnectAttempts": 5
+    },
     "id": "fb3752c3-24c0-4a5e-b0e9-7475c0ac1b9c",
     "moduleClass": "org.sensorhub.impl.client.sost.SOSTClient",
     "name": "SOS-T Client",
-    "enabled": false
+    "enabled": true
   }
 ]
