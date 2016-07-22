@@ -101,25 +101,22 @@
           {
             "objClass": "org.sensorhub.impl.sensor.nmea.gps.NMEAGpsConfig",
             "commSettings": {
-              "objClass": "org.sensorhub.impl.comm.RS232Config",
-              "portName": "/dev/ttyUSB0",
-              "baudRate": 9600,
-              "dataBits": 8,
-              "stopBits": 1,
-              "parity": "PARITY_NONE",
-              "receiveTimeout": -1,
-              "receiveThreshold": 1,
+              "objClass": "org.sensorhub.impl.comm.rxtx.RxtxSerialCommProviderConfig",
               "moduleClass": "org.sensorhub.impl.comm.rxtx.RxtxSerialCommProvider",
-              "enabled": false
+              "protocol": {
+                "objClass": "org.sensorhub.impl.comm.UARTConfig",
+                "portName": "/dev/ttyUSB0",
+                "baudRate": 9600,
+                "dataBits": 8,
+                "stopBits": 1,
+                "parity": "PARITY_NONE",
+                "receiveTimeout": -1,
+                "receiveThreshold": 1
+              }
             },
             "activeSentences": [
               "GGA", "GSA"
             ],
-            "enableHistory": true,
-            "connectTimeout": 0,
-            "position": {
-              "objClass": "org.sensorhub.api.sensor.PositionConfig"
-            },
             "id": "d795beff-0a50-4d72-8744-d679e7ad85fe",
             "moduleClass": "org.sensorhub.impl.sensor.nmea.gps.NMEAGpsSensor",
             "name": "GPS Sensor",
@@ -132,23 +129,20 @@
           {
             "objClass": "org.sensorhub.impl.sensor.bno055.Bno055Config",
             "commSettings": {
-              "objClass": "org.sensorhub.impl.comm.RS232Config",
-              "portName": "/dev/ttyAMA0",
-              "baudRate": 115200,
-              "dataBits": 8,
-              "stopBits": 1,
-              "parity": "PARITY_NONE",
-              "receiveTimeout": -1,
-              "receiveThreshold": 1,
+              "objClass": "org.sensorhub.impl.comm.rxtx.RxtxSerialCommProviderConfig",
               "moduleClass": "org.sensorhub.impl.comm.rxtx.RxtxSerialCommProvider",
-              "enabled": false
+              "protocol": {
+                "objClass": "org.sensorhub.impl.comm.UARTConfig",
+                "portName": "/dev/ttyAMA0",
+                "baudRate": 115200,
+                "dataBits": 8,
+                "stopBits": 1,
+                "parity": "PARITY_NONE",
+                "receiveTimeout": -1,
+                "receiveThreshold": 1
+              }
             },
             "decimFactor": 10,
-            "enableHistory": true,
-            "connectTimeout": 0,
-            "position": {
-              "objClass": "org.sensorhub.api.sensor.PositionConfig"
-            },
             "id": "b7b61422-22ed-4aee-a037-548dd8322043",
             "moduleClass": "org.sensorhub.impl.sensor.bno055.Bno055Sensor",
             "name": "Orientation Sensor",
@@ -169,11 +163,6 @@
               "imgWidth": 640,
               "imgHeight": 480,
               "frameRate": 30
-            },
-            "enableHistory": true,
-            "connectTimeout": 0,
-            "position": {
-              "objClass": "org.sensorhub.api.sensor.PositionConfig"
             },
             "id": "9f867e12-c46a-4bcc-93ed-4b53dd13635e",
             "moduleClass": "org.sensorhub.impl.sensor.v4l.V4LCameraDriver",
