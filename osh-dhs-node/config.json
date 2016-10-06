@@ -37,6 +37,7 @@
     "newStorageConfig": {
       "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
       "memoryCacheSize": 1024,
+      "objectCacheSize": 100,
       "storagePath": "db.dat",
       "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
       "enabled": false
@@ -161,6 +162,7 @@
       "objClass": "org.sensorhub.impl.sensor.rtpcam.RTSPConfig",
       "videoPath": "/livePreviewStream",
       "localUdpPort": 20200,
+      "onlyConnectRtsp": false,
       "remotePort": 554,
       "remoteHost": "Virb-3910500051.local",
       "localAddress": "AUTO"
@@ -188,6 +190,7 @@
       "objClass": "org.sensorhub.impl.sensor.rtpcam.RTSPConfig",
       "videoPath": "/livePreviewStream",
       "localUdpPort": 20300,
+      "onlyConnectRtsp": false,
       "remotePort": 554,
       "localAddress": "AUTO"
     },
@@ -217,6 +220,7 @@
       "objClass": "org.sensorhub.impl.sensor.rtpcam.RTSPConfig",
       "videoPath": "/cam/realmonitor?channel=1&subtype=0",
       "localUdpPort": 20000,
+      "onlyConnectRtsp": false,
       "remotePort": 554,
       "user": "admin",
       "password": "op3nsaysam3",
@@ -259,6 +263,8 @@
   {
     "objClass": "org.sensorhub.impl.sensor.mavlink.MavlinkConfig",
     "vehicleID": "solo:S115A5800419",
+    "maxTravelDistance": 150.0,
+    "maxAltitude": 50.0,
     "activeMessages": [
       "GLOBAL_POSITION",
       "ATTITUDE",
@@ -288,6 +294,7 @@
     "rtsp": {
       "objClass": "org.sensorhub.impl.sensor.rtpcam.RTSPConfig",
       "localUdpPort": 5600,
+      "onlyConnectRtsp": true,
       "remotePort": 5502,
       "remoteHost": "10.1.1.1",
       "localAddress": "AUTO"
@@ -319,6 +326,7 @@
     "storageConfig": {
       "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
       "memoryCacheSize": 1024,
+      "objectCacheSize": 100,
       "storagePath": "virb1.dat",
       "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
       "enabled": false
@@ -342,6 +350,7 @@
     "storageConfig": {
       "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
       "memoryCacheSize": 1024,
+      "objectCacheSize": 100,
       "storagePath": "virb2.dat",
       "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
       "enabled": false
@@ -359,6 +368,7 @@
     "storageConfig": {
       "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
       "memoryCacheSize": 1024,
+      "objectCacheSize": 100,
       "storagePath": "dahua1.dat",
       "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
       "enabled": false
@@ -382,6 +392,7 @@
     "storageConfig": {
       "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
       "memoryCacheSize": 1024,
+      "objectCacheSize": 100,
       "storagePath": "solo-nav.dat",
       "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
       "enabled": false
@@ -399,6 +410,7 @@
     "storageConfig": {
       "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
       "memoryCacheSize": 1024,
+      "objectCacheSize": 100,
       "storagePath": "solo-video.dat",
       "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
       "enabled": false
@@ -416,14 +428,13 @@
     "sensorID": "528b6041-33d6-4b16-a4bf-e81d05f9ffb9",
     "sos": {
       "objClass": "org.sensorhub.impl.comm.HTTPConfig",
-      "remoteHost": "192.168.0.10",
       "resourcePath": "/sensorhub/sos",
-      "remotePort": 8181,
+      "remotePort": 80,
       "localAddress": "AUTO"
     },
     "connection": {
       "objClass": "org.sensorhub.impl.client.sost.SOSTClientConfig$SOSConnectionConfig",
-      "usePersistentConnection": true,
+      "usePersistentConnection": false,
       "maxQueueSize": 10,
       "maxConnectErrors": 10,
       "checkReachability": true,
@@ -434,7 +445,7 @@
     "id": "a48123b0-fb96-4d7d-8aaf-941196fb1ab6",
     "moduleClass": "org.sensorhub.impl.client.sost.SOSTClient",
     "name": "Virb1 SOS-T Client",
-    "enabled": false
+    "enabled": true
   },
   {
     "objClass": "org.sensorhub.impl.service.sps.SPSServiceConfig",
@@ -496,6 +507,7 @@
       "objClass": "org.sensorhub.impl.sensor.rtpcam.RTSPConfig",
       "videoPath": "/axis-media/media.amp?videocodec=h264",
       "localUdpPort": 20100,
+      "onlyConnectRtsp": false,
       "remotePort": 554,
       "user": "root",
       "password": "mike",
