@@ -6,23 +6,22 @@
     "moduleClass": "org.sensorhub.impl.service.HttpServer",
     "httpPort": 8181,
     "servletsRootUrl": "/sensorhub",
-    "staticDocRootUrl": "web"
+    "staticDocRootUrl": "web",
+    "autoStart": true
   },
   {
     "objClass": "org.sensorhub.ui.AdminUIConfig",
     "id": "5cb05c9c-9123-4fa1-8731-ffaa51489678",
     "moduleClass": "org.sensorhub.ui.AdminUIModule",
-    "enabled": true
+    "autoStart": true
   },
   {
     "objClass": "org.sensorhub.impl.sensor.fakegps.FakeGpsConfig",
     "id": "d136b6ea-3950-4691-bf56-c84ec7d89d72",
     "name": "Simulated GPS Sensor",
     "moduleClass": "org.sensorhub.impl.sensor.fakegps.FakeGpsSensor",
-    "enabled": true,
+    "autoStart": true,
     "sensorML": null,
-    "autoActivate": true,
-    "enableHistory": false,
     "hiddenIO": null,
     "centerLatitude": 34.7300,
     "centerLongitude": -86.5850,
@@ -31,21 +30,25 @@
   },
   {
     "objClass": "org.sensorhub.impl.sensor.fakeweather.FakeWeatherConfig",
+    "serialNumber": "0123456879",
+    "location": {
+      "objClass": "org.sensorhub.api.sensor.PositionConfig$LLALocation",
+      "lat": 34.8038,
+      "lon": -86.7228,
+      "alt": 0.0
+    },
+    "sensorML": "base_description.xml",
     "id": "d136b6ea-3950-4691-bf56-c84ec7d89d73",
-    "name": "Simulated Weather Sensor",
-    "enabled": true,
     "moduleClass": "org.sensorhub.impl.sensor.fakeweather.FakeWeatherSensor",
-    "sensorML": null,
-    "autoActivate": true,
-    "enableHistory": false,
-    "hiddenIO": null
+    "name": "Simulated Weather Sensor",
+    "autoStart": true
   }, 
   {
     "objClass": "org.sensorhub.impl.persistence.StreamStorageConfig",
     "id": "5cb05c9c-9e08-4fa1-8731-ff4ff948bdc1",
     "name": "GPS Sensor Storage",
     "moduleClass": "org.sensorhub.impl.persistence.GenericStreamStorage",
-    "enabled": true,
+    "autoStart": true,
     "dataSourceID": "d136b6ea-3950-4691-bf56-c84ec7d89d72",
     "storageConfig":    
     {
@@ -60,7 +63,7 @@
     "id": "5cb05c9c-9e08-4fa1-8731-ff4ff948bdc2",
     "name": "Weather Data Storage",
     "moduleClass": "org.sensorhub.impl.persistence.GenericStreamStorage",
-    "enabled": true,
+    "autoStart": true,
     "dataSourceID": "d136b6ea-3950-4691-bf56-c84ec7d89d73",
     "storageConfig":    
     {
@@ -75,7 +78,7 @@
     "id": "5cb05c9c-9e08-4fa1-8731-ff41e246bdc1",
     "name": "SOS Service",
     "moduleClass": "org.sensorhub.impl.service.sos.SOSService",
-    "enabled": true,
+    "autoStart": true,
     "endPoint": "/sos",
     "enableHttpGET": true,
     "enableHttpPOST": true,
@@ -104,7 +107,7 @@
     "ogcCapabilitiesInfo": 
     {
       "title": "Test SOS Service",
-      "description": "An SOS service automatically deployed by SensorHub",
+      "description": "An SOS service automatically deployed by OpenSensorHub",
       "keywords": ["SensorHub", "GPS", "weather"],
       "fees": "NONE",
       "accessConstraints": "NONE",
@@ -120,7 +123,7 @@
         "administrativeArea": "OR",
         "postalCode": "97209",
         "country": "France",
-        "emails": ["admin@tommy.com"],
+        "emails": ["admin@bobby.com"],
         "website": null,
         "hoursOfService": null,
         "contactInstructions": null
