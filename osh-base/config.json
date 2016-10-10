@@ -53,7 +53,7 @@
     "storageConfig":    
     {
       "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
-      "moduleClass": "org.sensorhub.impl.persistence.perst.BasicStorageImpl",
+      "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
       "memoryCacheSize": 1024,
       "storagePath": "db/gps_obs.dat"
     }
@@ -68,7 +68,7 @@
     "storageConfig":    
     {
       "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
-      "moduleClass": "org.sensorhub.impl.persistence.perst.BasicStorageImpl",
+      "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
       "memoryCacheSize": 1024,
       "storagePath": "db/weather_obs.dat"
     }
