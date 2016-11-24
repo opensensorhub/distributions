@@ -1,3 +1,3 @@
 ### OSH Distros
 
-This is a place for scripts and Maven POMs used to assemble various distribution packages
+This is a place for scripts used to assemble various distribution packages by fetching and compiling modules from multiple OSH repositories
