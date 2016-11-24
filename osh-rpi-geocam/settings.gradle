@@ -1,0 +1,20 @@
+rootProject.name = 'osh-rpi-geocam'
+gradle.ext.oshCoreDir = "$rootDir/../../osh-core"
+gradle.ext.oshCommDir = "$rootDir/../../osh-comm"
+gradle.ext.oshSensorsDir = "$rootDir/../../osh-sensors"
+gradle.ext.oshServicesDir = "$rootDir/../../osh-services"
+
+includeBuild gradle.oshCoreDir
+includeBuild gradle.oshCommDir
+
+include 'sensorhub-driver-gps-nmea'
+include 'sensorhub-driver-bno055'
+include 'sensorhub-driver-videocam'
+include 'sensorhub-driver-v4l'
+include 'sensorhub-service-video'
+
+project(':sensorhub-driver-gps-nmea').projectDir = "$gradle.oshSensorsDir/sensorhub-driver-gps-nmea" as File
+project(':sensorhub-driver-bno055').projectDir = "$gradle.oshSensorsDir/sensorhub-driver-bno055" as File
+project(':sensorhub-driver-videocam').projectDir = "$gradle.oshSensorsDir/sensorhub-driver-videocam" as File
+project(':sensorhub-driver-v4l').projectDir = "$gradle.oshSensorsDir/sensorhub-driver-v4l" as File
+project(':sensorhub-service-video').projectDir = "$gradle.oshServicesDir/sensorhub-service-video" as File
