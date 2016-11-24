@@ -1,0 +1,35 @@
+rootProject.name = 'osh-dhs-node'
+gradle.ext.oshCoreDir = "$rootDir/../../osh-core"
+gradle.ext.oshCommDir = "$rootDir/../../osh-comm"
+gradle.ext.oshSensorsDir = "$rootDir/../../osh-sensors"
+gradle.ext.oshProcessingDir = "$rootDir/../../osh-processing"
+gradle.ext.oshServicesDir = "$rootDir/../../osh-services"
+
+includeBuild gradle.oshCoreDir
+includeBuild gradle.oshCommDir
+
+include 'sensorhub-driver-fakegps'
+include 'sensorhub-driver-fakeweather'
+include 'sensorhub-driver-videocam'
+include 'sensorhub-driver-v4l'
+include 'sensorhub-driver-rtpcam'
+include 'sensorhub-driver-axis'
+include 'sensorhub-driver-dahua'
+include 'sensorhub-driver-virb-xe'
+include 'sensorhub-driver-mavlink'
+//include 'sensorhub-driver-trupulse'
+include 'sensorhub-service-video'
+
+project(':sensorhub-driver-fakegps').projectDir = "$gradle.oshSensorsDir/sensorhub-driver-fakegps" as File
+project(':sensorhub-driver-fakeweather').projectDir = "$gradle.oshSensorsDir/sensorhub-driver-fakeweather" as File
+project(':sensorhub-driver-videocam').projectDir = "$gradle.oshSensorsDir/sensorhub-driver-videocam" as File
+project(':sensorhub-driver-v4l').projectDir = "$gradle.oshSensorsDir/sensorhub-driver-v4l" as File
+project(':sensorhub-driver-rtpcam').projectDir = "$gradle.oshSensorsDir/sensorhub-driver-rtpcam" as File
+project(':sensorhub-driver-axis').projectDir = "$gradle.oshSensorsDir/sensorhub-driver-axis" as File
+project(':sensorhub-driver-dahua').projectDir = "$gradle.oshSensorsDir/sensorhub-driver-dahua" as File
+project(':sensorhub-driver-virb-xe').projectDir = "$gradle.oshSensorsDir/sensorhub-driver-virb-xe" as File
+project(':sensorhub-driver-mavlink').projectDir = "$gradle.oshSensorsDir/sensorhub-driver-mavlink" as File
+//project(':sensorhub-driver-trupulse').projectDir = "$gradle.oshSensorsDir/sensorhub-driver-trupulse" as File
+project(':sensorhub-service-video').projectDir = "$gradle.oshServicesDir/sensorhub-service-video" as File
+
+
