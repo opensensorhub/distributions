@@ -1,0 +1,21 @@
+apply from: gradle.oshCoreDir + '/buildSrc/common.gradle'
+version = oshCoreVersion
+
+dependencies {
+  project.subprojects.each {
+    p -> compile p
+  }
+}
+
+distributions {
+  main {
+    contents {
+      from 'src/scripts'
+      from 'src/config'
+      from 'README.md'
+      into('lib') {
+        from project.configurations.compileClasspath
+      } 
+    }
+  }
+}

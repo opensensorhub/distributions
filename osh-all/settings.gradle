@@ -1,0 +1,31 @@
+rootProject.name = 'osh-all'
+gradle.ext.oshCoreDir = "$rootDir/../../osh-core"
+gradle.ext.oshCommDir = "$rootDir/../../osh-comm"
+
+// include core and comm builds if present locally
+// comment this to build against published artifacts
+if (new File(gradle.oshCoreDir).exists()) 
+  includeBuild gradle.oshCoreDir
+if (new File(gradle.oshCommDir).exists())
+  includeBuild gradle.oshCommDir
+
+// add all add-ons
+def repos = ['osh-sensors', 'osh-persistence', 'osh-services','osh-security']
+repos.each {
+
+  File repoDir = new File(rootDir, '../../' + it)
+
+  if (!repoDir.exists())
+    throw new GradleException('Repository ' + it + ' is missing')
+  
+  // include all folders with build.gradle as subprojects
+  FileTree subprojects = fileTree(repoDir).include('**/build.gradle')
+  subprojects.files.each { File f ->
+    File projectFolder = f.parentFile
+    if (projectFolder != repoDir) {
+      String projectName = projectFolder.name
+      include projectName
+      project(':' + projectName).projectDir = projectFolder
+    }
+  }
+}
