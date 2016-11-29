@@ -1,6 +1,13 @@
 apply from: gradle.oshCoreDir + '/buildSrc/common.gradle'
 version = oshCoreVersion
 
+allprojects {
+  repositories {
+    maven { url "http://52north.org/maven/repo/releases" }
+    maven { url "http://maven.vaadin.com/vaadin-addons" }
+  }
+}
+
 dependencies {
   compile 'org.sensorhub:sensorhub-core:' + oshCoreVersion
   compile 'org.sensorhub:sensorhub-service-swe:' + oshCoreVersion

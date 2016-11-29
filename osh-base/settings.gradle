@@ -1,4 +1,4 @@
-rootProject.name = 'osh-base-install'
+rootProject.name = 'osh-base'
 gradle.ext.oshCoreDir = "$rootDir/../../osh-core"
 gradle.ext.oshCommDir = "$rootDir/../../osh-comm"
 
