@@ -1,14 +1,10 @@
 rootProject.name = 'osh-base'
-gradle.ext.oshCoreDir = "$rootDir/../../osh-core"
-gradle.ext.oshCommDir = "$rootDir/../../osh-comm"
 
-includeBuild gradle.oshCoreDir
-includeBuild gradle.oshCommDir
+apply from: "$rootDir/../../osh-core/include-projects.gradle"
 
 include 'sensorhub-driver-fakegps'
 include 'sensorhub-driver-fakeweather'
 
-project(':sensorhub-driver-fakegps').projectDir = "$rootDir/../../osh-sensors/sensorhub-driver-fakegps" as File
-project(':sensorhub-driver-fakeweather').projectDir = "$rootDir/../../osh-sensors/sensorhub-driver-fakeweather" as File
-
-
+def oshSensorsDir = "$rootDir/../../osh-sensors"
+project(':sensorhub-driver-fakegps').projectDir = "$oshSensorsDir/sensorhub-driver-fakegps" as File
+project(':sensorhub-driver-fakeweather').projectDir = "$oshSensorsDir/sensorhub-driver-fakeweather" as File

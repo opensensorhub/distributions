@@ -1,20 +1,22 @@
-apply from: gradle.oshCoreDir + '/buildSrc/common.gradle'
-version = oshCoreVersion
+apply from: gradle.oshCoreDir + '/common.gradle'
 
-allprojects {
-  repositories {
-    maven { url "http://52north.org/maven/repo/releases" }
-    maven { url "http://maven.vaadin.com/vaadin-addons" }
+allprojects  {
+  version = oshCoreVersion
+  
+  configurations.all {
+    resolutionStrategy {
+      dependencySubstitution.all { DependencySubstitution dependency ->
+        if (dependency.requested instanceof ModuleComponentSelector) {
+          if (dependency.requested.group == 'org.sensorhub') {
+            dependency.useTarget findProject(':'+dependency.requested.module)
+          }
+        }
+      }
+    }
   }
 }
 
 dependencies {
-  compile 'org.sensorhub:sensorhub-core:' + oshCoreVersion
-  compile 'org.sensorhub:sensorhub-service-swe:' + oshCoreVersion
-  compile 'org.sensorhub:sensorhub-storage-perst:' + oshCoreVersion
-  compile 'org.sensorhub:sensorhub-webui-core:' + oshCoreVersion
-  compile 'org.sensorhub:sensorhub-tools:' + oshCoreVersion
-  compile 'org.sensorhub:sensorhub-comm-ip-zeroconf:' + oshCoreVersion
   project.subprojects.each {
     p -> compile p
   }
