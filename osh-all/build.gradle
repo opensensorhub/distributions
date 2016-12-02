@@ -1,5 +1,20 @@
-apply from: gradle.oshCoreDir + '/buildSrc/common.gradle'
-version = oshCoreVersion
+apply from: gradle.oshCoreDir + '/common.gradle'
+
+allprojects  {
+  version = oshCoreVersion
+  
+  configurations.all {
+    resolutionStrategy {
+      dependencySubstitution.all { DependencySubstitution dependency ->
+        if (dependency.requested instanceof ModuleComponentSelector) {
+          if (dependency.requested.group == 'org.sensorhub' || dependency.requested.group == 'org.vast.opengis') {
+            dependency.useTarget findProject(':'+dependency.requested.module)
+          }
+        }
+      }
+    }
+  }
+}
 
 dependencies {
   project.subprojects.each {

@@ -1,18 +1,10 @@
 rootProject.name = 'osh-all'
-gradle.ext.oshCoreDir = "$rootDir/../../osh-core"
-gradle.ext.oshCommDir = "$rootDir/../../osh-comm"
 
-// include core and comm builds if present locally
-// comment this to build against published artifacts
-if (new File(gradle.oshCoreDir).exists()) 
-  includeBuild gradle.oshCoreDir
-if (new File(gradle.oshCommDir).exists())
-  includeBuild gradle.oshCommDir
+apply from: "$rootDir/../../osh-core/include-projects.gradle"
 
-// add all add-ons
-def repos = ['osh-sensors', 'osh-persistence', 'osh-services','osh-security']
+// add all modules from the following repos
+def repos = ['osh-comm', 'osh-sensors', 'osh-persistence', 'osh-services','osh-security']
 repos.each {
-
   File repoDir = new File(rootDir, '../../' + it)
 
   if (!repoDir.exists())
