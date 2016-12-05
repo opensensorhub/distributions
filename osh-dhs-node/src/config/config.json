@@ -22,7 +22,6 @@
   },
   {
     "objClass": "org.sensorhub.impl.comm.zeroconf.IpNetworkConfig",
-    "networkInterface": "wlp1s0",
     "zeroConfHostName": "OSH",
     "id": "33a1f0fe-f571-4e6e-88f8-1bbf7163008b",
     "moduleClass": "org.sensorhub.impl.comm.zeroconf.IpCommNetwork",

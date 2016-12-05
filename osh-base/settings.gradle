@@ -1,10 +1,12 @@
 rootProject.name = 'osh-base'
+def oshMainDir = "$rootDir/../.."
+gradle.ext.oshCoreDir = "$oshMainDir/osh-core"
 
-apply from: "$rootDir/../../osh-core/include-projects.gradle"
-
-include 'sensorhub-driver-fakegps'
-include 'sensorhub-driver-fakeweather'
-
-def oshSensorsDir = "$rootDir/../../osh-sensors"
-project(':sensorhub-driver-fakegps').projectDir = "$oshSensorsDir/sensorhub-driver-fakegps" as File
-project(':sensorhub-driver-fakeweather').projectDir = "$oshSensorsDir/sensorhub-driver-fakeweather" as File
+// include builds from other repos
+def repos = ['osh-core', 'osh-sensors']
+repos.each { repoName ->
+  File repoDir = new File(oshMainDir, repoName)
+  if (!repoDir.exists())
+    throw new GradleException('Repository ' + repoName + ' is missing')  
+  includeBuild repoDir
+}
