@@ -3,6 +3,23 @@
 OSH distribution with preloaded drivers for creating a geospatially aware camera using a Raspberry Pi and and off-the-shelf components. This includes sensor drivers for NMEA GPS, BNO055 absolute orientation sensor and Video4Linux camera.
 
 
+#### Build
+
+To build this distribution, just clone the needed repositories and run a Gradle build:
+
+```
+$ git clone --recursive https://github.com/opensensorhub/osh-core
+$ git clone https://github.com/opensensorhub/osh-comm
+$ git clone https://github.com/opensensorhub/osh-sensors
+$ git clone https://github.com/opensensorhub/osh-services
+$ git clone https://github.com/opensensorhub/osh-distros
+$ cd osh-distros/osh-rpi-geocam/
+$ ../gradlew build
+```
+
+The resulting Zip file is in the `build/distributions` folder. You can transfer it directly to your RPi and run with Java version >= 7.
+
+
 #### Startup
 
 To start using OSH with the default configuration, just run the command:
