@@ -17,7 +17,7 @@ $ cd osh-distros/osh-rpi-geocam/
 $ ../gradlew build
 ```
 
-The resulting Zip file is in the `build/distributions` folder. You can transfer it directly to your RPi and run with Java version >= 7.
+The resulting Zip file is in the `build/distributions` folder. You can transfer it directly to your RPi, unzip and run with Java version >= 7.
 
 
 #### Startup

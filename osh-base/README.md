@@ -9,6 +9,21 @@ WARNING: The simulated GPS sensor needs a working Internet connection to functio
 uses Google Direction API to generate a realistic trajectory.
 
 
+#### Build
+
+To build this distribution, just clone the needed repositories and run a Gradle build:
+
+```
+$ git clone --recursive https://github.com/opensensorhub/osh-core
+$ git clone https://github.com/opensensorhub/osh-sensors
+$ git clone https://github.com/opensensorhub/osh-distros
+$ cd osh-distros/osh-base
+$ ../gradlew build
+```
+
+The resulting Zip file is in the `build/distributions` folder. Just unzip it and run with Java version >= 7.
+
+
 #### Startup
 
 To start using OSH with the default configuration, just run the command:

@@ -7,6 +7,6 @@ def repos = ['osh-core', 'osh-sensors']
 repos.each { repoName ->
   File repoDir = new File(oshMainDir, repoName)
   if (!repoDir.exists())
-    throw new GradleException('Repository ' + repoName + ' is missing')  
+    throw new GradleException('Repository ' + repoName + ' is missing. Please clone it from https://github.com/opensensorhub/' + repoName)  
   includeBuild repoDir
 }
