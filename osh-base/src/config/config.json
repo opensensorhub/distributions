@@ -83,6 +83,7 @@
     "enableHttpGET": true,
     "enableHttpPOST": true,
     "enableSOAP": true,
+    "enableTransactional": true,
     "dataProviders" :
     [
        {
