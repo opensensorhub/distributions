@@ -14,7 +14,7 @@ $ git clone https://github.com/opensensorhub/osh-sensors
 $ git clone https://github.com/opensensorhub/osh-persistence
 $ git clone https://github.com/opensensorhub/osh-security
 $ git clone https://github.com/opensensorhub/osh-distros
-$ cd osh-distros/osh-base
+$ cd osh-distros/osh-geoint
 $ ../gradlew build
 ```
 
@@ -23,7 +23,7 @@ The resulting Zip file is in the `build/distributions` folder. Just unzip it and
 
 #### Install
 
-Before you can run OSH with secure HTTP and OAuth, a keystore and a truststore must be created.
+Before you can run OSH through secure HTTP and login via OAuth, a keystore and a truststore must be created.
 For this, run the following commands in the root osh folder:
 
 ```
