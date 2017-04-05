@@ -1,0 +1,12 @@
+rootProject.name = 'osh-geoint'
+def oshMainDir = "$rootDir/../.."
+gradle.ext.oshCoreDir = "$oshMainDir/osh-core"
+
+// include builds from other repos
+def repos = ['osh-core', 'osh-sensors', 'osh-security', 'osh-persistence']
+repos.each { repoName ->
+  File repoDir = new File(oshMainDir, repoName)
+  if (!repoDir.exists())
+    throw new GradleException('Repository ' + repoName + ' is missing. Please clone it from https://github.com/opensensorhub/' + repoName)  
+  includeBuild repoDir
+}
