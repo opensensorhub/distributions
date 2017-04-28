@@ -28,3 +28,15 @@ distributions {
     }
   }
 }
+
+task testIncludedBuilds {
+    dependsOn gradle.includedBuild('osh-core').task(':sensorhub-core:test')
+    dependsOn gradle.includedBuild('osh-core').task(':sensorhub-service-swe:test')
+    dependsOn gradle.includedBuild('osh-core').task(':sensorhub-storage-perst:test')
+    dependsOn gradle.includedBuild('osh-core').task(':sensorhub-webui-core:test')
+    dependsOn gradle.includedBuild('osh-core').task(':sensorhub-tools:test')
+    dependsOn gradle.includedBuild('osh-sensors').task(':sensorhub-driver-fakeweather:test')
+    dependsOn gradle.includedBuild('osh-persistence').task(':sensorhub-storage-es:test')
+    dependsOn gradle.includedBuild('osh-security').task(':sensorhub-security-oauth:test')
+}
+test.dependsOn testIncludedBuilds
