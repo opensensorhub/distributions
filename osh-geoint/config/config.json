@@ -30,6 +30,7 @@
     "authzEndpoint": "https://gxisaccess.gxaccess.com/ms_oauth/oauth2/endpoints/oauthservice/authorize",
     "tokenEndpoint": "https://gxisaccess.gxaccess.com/ms_oauth/oauth2/endpoints/oauthservice/tokens",
     "userInfoEndpoint": "https://gxisaccess.gxaccess.com/ms_oauth/resources/userprofile",
+    "redirectURL": "https://$OSH_HOST/sensorhub/admin",
     "clientID": "$GEOAXIS_CLIENT_ID",
     "clientSecret": "$GEOAXIS_CLIENT_SECRET",
     "authzScope": "profile:user_id",
