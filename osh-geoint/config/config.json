@@ -26,7 +26,7 @@
     "autoStart": true
   },
   {
-    "objClass": "org.sensorhub.impl.security.oauth.OAuthClientConfig",
+    "objClass": "org.sensorhub.impl.security.gxoauth.OAuthClientConfig",
     "authzEndpoint": "https://gxisaccess.gxaccess.com/ms_oauth/oauth2/endpoints/oauthservice/authorize",
     "tokenEndpoint": "https://gxisaccess.gxaccess.com/ms_oauth/oauth2/endpoints/oauthservice/tokens",
     "userInfoEndpoint": "https://gxisaccess.gxaccess.com/ms_oauth/resources/userprofile",
@@ -35,7 +35,7 @@
     "clientSecret": "$GEOAXIS_CLIENT_SECRET",
     "authzScope": "profile:user_id",
     "id": "6d0c2aaf-7d70-4642-a718-e6961d7055ca",
-    "moduleClass": "org.sensorhub.impl.security.oauth.OAuthClient",
+    "moduleClass": "org.sensorhub.impl.security.gxoauth.OAuthClient",
     "name": "OAuth",
     "autoStart": true
   },
