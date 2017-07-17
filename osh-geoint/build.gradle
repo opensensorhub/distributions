@@ -9,7 +9,7 @@ dependencies {
   compile 'org.sensorhub:sensorhub-tools:' + oshCoreVersion
   compile 'org.sensorhub:sensorhub-driver-fakeweather:[0.1,2.0)'
   compile 'org.sensorhub:sensorhub-storage-es:[0.1,2.0)'
-  compile 'org.sensorhub:sensorhub-security-oauth:[0.1,2.0)'
+  compile 'org.sensorhub:sensorhub-security-gxoauth:[0.1,2.0)'
 }
 
 distributions {
@@ -37,6 +37,6 @@ task testIncludedBuilds {
     dependsOn gradle.includedBuild('osh-core').task(':sensorhub-tools:test')
     dependsOn gradle.includedBuild('osh-sensors').task(':sensorhub-driver-fakeweather:test')
     dependsOn gradle.includedBuild('osh-persistence').task(':sensorhub-storage-es:test')
-    dependsOn gradle.includedBuild('osh-security').task(':sensorhub-security-oauth:test')
+    dependsOn gradle.includedBuild('osh-security').task(':sensorhub-security-gxoauth:test')
 }
 test.dependsOn testIncludedBuilds
