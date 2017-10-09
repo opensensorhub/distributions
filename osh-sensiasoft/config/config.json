@@ -30,6 +30,13 @@
         "name": "Anonymous User",
         "password": "",
         "roles": ["anon"]
+      },
+      {
+        "objClass": "org.sensorhub.impl.security.BasicSecurityRealmConfig$UserConfig",
+        "id": "sensor",
+        "name": "Smart Sensors",
+        "password": "pwd",
+        "roles": ["sost"]
       }
     ],
     "roles": [
@@ -43,6 +50,16 @@
         "objClass": "org.sensorhub.impl.security.BasicSecurityRealmConfig$RoleConfig",
         "id": "anon",
         "allow": ["sos[*]/get/*"],
+        "deny": []
+      },
+      {
+        "objClass": "org.sensorhub.impl.security.BasicSecurityRealmConfig$RoleConfig",
+        "id": "sost",
+        "allow": [
+          "sos[*]/get/*",
+          "sos[*]/insert/*",
+          "sos[*]/update/*"
+        ],
         "deny": []
       }
     ],

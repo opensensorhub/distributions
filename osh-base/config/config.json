@@ -7,6 +7,61 @@
     "httpPort": 8181,
     "servletsRootUrl": "/sensorhub",
     "staticDocRootUrl": "web",
+    "authMethod": "BASIC",
+    "autoStart": true
+  },
+  {
+    "objClass": "org.sensorhub.impl.security.BasicSecurityRealmConfig",
+    "users": [
+      {
+        "objClass": "org.sensorhub.impl.security.BasicSecurityRealmConfig$UserConfig",
+        "id": "admin",
+        "name": "Administrator",
+        "password": "admin",
+        "roles": ["admin"]
+      },
+      {
+        "objClass": "org.sensorhub.impl.security.BasicSecurityRealmConfig$UserConfig",
+        "id": "anonymous",
+        "name": "Anonymous User",
+        "password": "",
+        "roles": ["anon"]
+      },
+      {
+        "objClass": "org.sensorhub.impl.security.BasicSecurityRealmConfig$UserConfig",
+        "id": "sensor",
+        "name": "Smart Sensors",
+        "password": "pwd",
+        "roles": ["sost"]
+      }
+    ],
+    "roles": [
+      {
+        "objClass": "org.sensorhub.impl.security.BasicSecurityRealmConfig$RoleConfig",
+        "id": "admin",
+        "allow": ["*"],
+        "deny": []
+      },
+      {
+        "objClass": "org.sensorhub.impl.security.BasicSecurityRealmConfig$RoleConfig",
+        "id": "anon",
+        "allow": ["sos[*]/get/*"],
+        "deny": []
+      },
+      {
+        "objClass": "org.sensorhub.impl.security.BasicSecurityRealmConfig$RoleConfig",
+        "id": "sost",
+        "allow": [
+          "sos[*]/get/*",
+          "sos[*]/insert/*",
+          "sos[*]/update/*"
+        ],
+        "deny": []
+      }
+    ],
+    "id": "bd112969-8838-4f62-8d10-1edf1baa6669",
+    "moduleClass": "org.sensorhub.impl.security.BasicSecurityRealm",
+    "name": "Users",
     "autoStart": true
   },
   {
@@ -50,8 +105,7 @@
     "moduleClass": "org.sensorhub.impl.persistence.GenericStreamStorage",
     "autoStart": true,
     "dataSourceID": "d136b6ea-3950-4691-bf56-c84ec7d89d72",
-    "storageConfig":    
-    {
+    "storageConfig": {
       "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
       "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
       "memoryCacheSize": 1024,
@@ -65,8 +119,7 @@
     "moduleClass": "org.sensorhub.impl.persistence.GenericStreamStorage",
     "autoStart": true,
     "dataSourceID": "d136b6ea-3950-4691-bf56-c84ec7d89d73",
-    "storageConfig":    
-    {
+    "storageConfig": {
       "objClass": "org.sensorhub.impl.persistence.perst.BasicStorageConfig",
       "moduleClass": "org.sensorhub.impl.persistence.perst.ObsStorageImpl",
       "memoryCacheSize": 1024,
@@ -85,8 +138,7 @@
     "enableSOAP": true,
     "enableTransactional": true,
     "customFormats": [],
-    "dataProviders" :
-    [
+    "dataProviders" : [
        {
            "objClass": "org.sensorhub.impl.service.sos.SensorDataProviderConfig",
            "enabled": true,
@@ -106,8 +158,7 @@
            "storageID": "5cb05c9c-9e08-4fa1-8731-ff4ff948bdc2"
        }
     ],
-    "ogcCapabilitiesInfo": 
-    {
+    "ogcCapabilitiesInfo": {
       "title": "Test SOS Service",
       "description": "An SOS service automatically deployed by OpenSensorHub",
       "keywords": ["SensorHub", "GPS", "weather"],
@@ -130,6 +181,11 @@
         "hoursOfService": null,
         "contactInstructions": null
       }
+    },
+    "security": {
+      "objClass": "org.sensorhub.api.security.SecurityConfig",
+      "enableAccessControl": true,
+      "requireAuth": false
     }
   }
 ]

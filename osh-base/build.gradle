@@ -15,8 +15,8 @@ distributions {
   main {
     baseName = 'osh-base-install'
     contents {
-      from 'src/scripts'
-      from 'src/config'
+      from 'scripts'
+      from 'config'
       from 'README.md'
       into('web') {
         from 'web'
