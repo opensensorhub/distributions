@@ -12,6 +12,8 @@ $ git clone --recursive https://github.com/opensensorhub/osh-core
 $ git clone https://github.com/opensensorhub/osh-comm
 $ git clone https://github.com/opensensorhub/osh-sensors
 $ git clone https://github.com/opensensorhub/osh-services
+$ git clone https://github.com/opensensorhub/osh-positioning
+$ git clone https://github.com/opensensorhub/osh-video
 $ git clone https://github.com/opensensorhub/osh-distros
 $ cd osh-distros/osh-rpi-geocam/
 $ ../gradlew build
