@@ -112,7 +112,7 @@
         "hiddenOutputs": [],
         "liveDataTimeout": 10.0,
         "maxFois": 10,
-        "Offering ID": "urn:mysos:offering03",
+        "offeringID": "urn:mysos:offering03",
         "name": "Fake Weather",
         "description": "Fake Weather sensor",
         "enabled": true

@@ -81,6 +81,7 @@
   {
     "objClass": "org.sensorhub.impl.sensor.fakegps.FakeGpsConfig",
     "googleApiUrl": "http://maps.googleapis.com/maps/api/directions/json",
+    "googleApiKey": "ENTER_YOUR_API_KEY_HERE",
     "centerLatitude": 34.73,
     "centerLongitude": -86.585,
     "areaSize": 0.1,
@@ -600,7 +601,7 @@
         "hiddenOutputs": [],
         "liveDataTimeout": 10.0,
         "maxFois": 10,
-        "Offering ID": "urn:mysos:offering02",
+        "offeringID": "urn:mysos:offering02",
         "name": "Simulated GPS",
         "description": "Simulated GPS sensor",
         "enabled": true
@@ -612,7 +613,7 @@
         "hiddenOutputs": [],
         "liveDataTimeout": 10.0,
         "maxFois": 10,
-        "Offering ID": "urn:mysos:offering03",
+        "offeringID": "urn:mysos:offering03",
         "name": "Simulated Weather",
         "description": "Simulated Weather sensor",
         "enabled": true
@@ -622,7 +623,7 @@
         "storageID": "5cb4569c-9e08-4fa1-1458-000000000000",
         "hiddenOutputs": [],
         "maxFois": 10,
-        "Offering ID": "urn:android:device:060693280a28e015-sos",
+        "offeringID": "urn:android:device:060693280a28e015-sos",
         "name": "Android GPS and Video Data",
         "description": "GPS and video data collected using Android phone during a drive through Toulouse",
         "enabled": true
@@ -632,7 +633,7 @@
         "storageID": "d136b6ea-3950-4691-1234-ac893e5fbb22",
         "hiddenOutputs": [],
         "maxFois": 10,
-        "Offering ID": "urn:mysos:avl",
+        "offeringID": "urn:mysos:avl",
         "name": "AVL 911",
         "description": "AVL location and status data for 911 vehicles",
         "enabled": true
@@ -644,7 +645,7 @@
         "hiddenOutputs": [],
         "liveDataTimeout": 10.0,
         "maxFois": 10,
-        "Offering ID": "urn:mysos:avl:police",
+        "offeringID": "urn:mysos:avl:police",
         "description": "AVL location and status data for police vehicles",
         "enabled": false
       },
@@ -655,7 +656,7 @@
         "hiddenOutputs": [],
         "liveDataTimeout": 10.0,
         "maxFois": 10,
-        "Offering ID": "urn:mysos:avl:fire",
+        "offeringID": "urn:mysos:avl:fire",
         "description": "AVL location and status data for fire vehicles",
         "enabled": false
       },
@@ -666,7 +667,7 @@
         "hiddenOutputs": [],
         "liveDataTimeout": 10.0,
         "maxFois": 10,
-        "Offering ID": "urn:mysos:avl:rescue",
+        "offeringID": "urn:mysos:avl:rescue",
         "description": "AVL location and status data for rescue vehicles",
         "enabled": false
       },
@@ -677,7 +678,7 @@
         "hiddenOutputs": [],
         "liveDataTimeout": 10.0,
         "maxFois": 10,
-        "Offering ID": "urn:mysos:plume",
+        "offeringID": "urn:mysos:plume",
         "name": "Plume Data",
         "description": "Simulated data of a chemical release based on a plume model",
         "enabled": true
@@ -687,7 +688,7 @@
         "storageID": "f5ab10ad-9e12-4257-dddd-ed7d721b26e2",
         "hiddenOutputs": [],
         "maxFois": 10,
-        "Offering ID": "urn:mysos:solo:nav2",
+        "offeringID": "urn:mysos:solo:nav2",
         "description": "Navigation data from 3DR Solo UAV",
         "enabled": true
       },
@@ -696,7 +697,7 @@
         "storageID": "f5ab10ad-9e12-4257-dddd-ed7d721b26e3",
         "hiddenOutputs": [],
         "maxFois": 10,
-        "Offering ID": "urn:mysos:solo:video2",
+        "offeringID": "urn:mysos:solo:video2",
         "description": "Video data from 3DR Solo UAV",
         "enabled": true
       },
@@ -707,7 +708,7 @@
         "hiddenOutputs": [],
         "liveDataTimeout": 10.0,
         "maxFois": 10,
-        "Offering ID": "urn:android:device:a0e0eac2fea3f614-sos",
+        "offeringID": "urn:android:device:a0e0eac2fea3f614-sos",
         "enabled": true
       }
     ],
