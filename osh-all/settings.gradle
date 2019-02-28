@@ -1,9 +1,9 @@
 rootProject.name = 'osh-all'
-
-apply from: "$rootDir/../../osh-core/include-projects.gradle"
+def oshMainDir = "$rootDir/../.."
+gradle.ext.oshCoreDir = "$oshMainDir/osh-addons/core"
 
 // add all modules from the following repos
-def repos = ['osh-comm', 'osh-sensors', 'osh-persistence', 'osh-services','osh-security']
+def repos = ['osh-addons/core', 'osh-addons']
 repos.each {
   File repoDir = new File(rootDir, '../../' + it)
 

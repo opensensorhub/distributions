@@ -1,9 +1,9 @@
 rootProject.name = 'osh-sensiasoft'
 def oshMainDir = "$rootDir/../.."
-gradle.ext.oshCoreDir = "$oshMainDir/osh-core"
+gradle.ext.oshCoreDir = "$oshMainDir/osh-addons/core"
 
 // include builds from other repos
-def repos = ['osh-core', 'osh-comm', 'osh-processing', 'osh-sensors', 'osh-video']
+def repos = ['osh-addons/core', 'osh-addons']
 repos.each { repoName ->
   File repoDir = new File(oshMainDir, repoName)
   if (!repoDir.exists())
